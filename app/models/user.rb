@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_toke
 
+  has_many :goals
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username)
     return nil if user.nil?

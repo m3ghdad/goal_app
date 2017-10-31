@@ -4,11 +4,10 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.new(goal_params)
 
     if @goal.save
-      flash[:notices] = ["goal saved"]
+      flash[:notices] = ['Goal saved!']
       redirect_to goal_url(@goal)
-
     else
-      flash.noe[:errors] = @goal.errors.full_messages
+      flash.now[:errors] = @goal.errors.full_messages
       render :new
     end
   end
@@ -47,19 +46,17 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal.find(params[:id])
+    @goal = Goal.find(params[:id])
 
   end
 
   def index
-    @goal = curren_user.goals
+    @goals = current_user.goals
   end
 
   private
   def goal_params
     params.require(:goal).permit(:title, :detail, :private, :completed)
   end
-
-
 
 end

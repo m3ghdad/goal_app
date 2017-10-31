@@ -13,7 +13,7 @@
 #
 
 class Goal < ApplicationRecord
-  validates :title, :detail, :private, :complete, presence: true
+  validates :title, :detail, :private, :completed, presence: true
 
   belongs_to :user
 end
